@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alumni Products</title>
+    <title>Products</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -228,9 +228,10 @@
             width: 60px;
             height: 60px;
             animation: spin 2s linear infinite;
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            position:fixed;
+            top:50%;
+            left:42%;
+       
             transform: translate(-50%, -50%);
             display: none;
         }
@@ -270,10 +271,11 @@
         }
 
         .modal-details-section .price-button-container {
-            background-color: #f8f9fa;
+            background-color: #e2f3f1;
             padding: 15px;
             border-radius: 10px;
             margin-top: 20px;
+           
         }
 
         .modal-details-section .btn-buy {
@@ -318,10 +320,32 @@
 
             .product-card {
                 margin-bottom: 15px;
+                padding: 10px;
             }
 
             .product-card img {
                 height: 200px;
+                margin-bottom: 10px;
+            }
+
+            .product-details h5 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .product-details .price {
+                font-size: 1rem;
+            }
+
+            .product-details .mrp {
+                font-size: 0.8rem;
+            }
+
+            .product-details .stock-status {
+                font-size: 0.8rem;
+                padding: 2px 8px;
+                margin-top: 0;
+                margin-left: auto;
             }
 
             .modal-body {
@@ -351,7 +375,7 @@
 <body>
     <div class="header-section">
         <div class="container">
-            <h1 class="text-center">Alumni Products</h1>
+            <h1 class="text-center">Products</h1>
         </div>
     </div>
 
@@ -443,10 +467,10 @@
                             <div class="d-flex align-items-center">
                                 <span class="price">₹${product.price}</span>
                                 <span class="mrp"><del>${product.mrp}</del></span>
+                                <span class="stock-status ${stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock'}" style="margin-left: auto;">
+                                    ${stockStatus} ${product.stock > 0 ? `( ${product.stock} left )` : ''}
+                                </span> 
                             </div>
-                            <span class="stock-status ${stockStatus === 'In Stock' ? 'in-stock' : 'out-of-stock'}">
-                                ${stockStatus} ${product.stock > 0 ? `( ${product.stock} left )` : ''}
-                            </span> 
                         </div>
                     </a>
                 `;
@@ -470,7 +494,7 @@
             `).join('');
             modalDetailsSection.innerHTML = `
                 <h4 class="mb-3">${product.name}</h4>
-                <p class="text-muted mb-2">Product ID: <strong>${product.id}</strong></p>
+                <p class="text-muted mb-2">Product ID: <span style="font-weight: bold; color: red;">${product.id}</span></p>
                 <p class="mb-3">${product.description}</p>
                 <div class="price-button-container">
                     <div>
@@ -480,9 +504,9 @@
                             ${stockStatus} ${product.stock > 0 ? `( ${product.stock} left )` : ''}
                         </span>
                     </div>
-                    <button class="btn-buy" ${product.stock === 0 ? 'disabled' : ''}>
+                    <a style="text-decoration: none; color: inherit;" href="https://wa.me/917816072525?text=I%20am%20interested%20in%20purchasing%20product%20ID%20${product.id}" class="btn-buy" ${product.stock === 0 ? 'style="pointer-events: none; opacity: 0.6;"' : ''}>
                         ${product.stock > 0 ? 'Buy' : 'Out of Stock'}
-                    </button>
+                    </a>
                 </div>
             `;
 
