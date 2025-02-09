@@ -15,10 +15,11 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // To parse form data
-app.use(express.static('public')); // Serve static files
+
 app.set('view engine', 'ejs'); // Set EJS as the view engine
 app.set('views', path.join(__dirname, 'views')); // Set views directory
-
+app.use(express.static(path.join(__dirname, 'public')));
+console.log('Serving static files from:', path.join(__dirname, 'public'));
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://shareenpan2:Fgouter55@cluster0.s3dpu.mongodb.net/olx?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,

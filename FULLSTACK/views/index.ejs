@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef; /* Softer background color */
+            font-family: 'Arial', sans-serif; /* Change to a cleaner font */
         }
 
         .header-section {
-            background: linear-gradient(45deg, #2980b9, #3498db);
+            background: linear-gradient(45deg, #007bff, #0056b3); /* Updated gradient */
             padding: 30px 0;
             margin-bottom: 30px;
         }
@@ -22,8 +22,9 @@
         .header-section h1 {
             color: white;
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem; /* Increased font size */
             font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Stronger text shadow */
         }
 
         .search-filter-container {
@@ -43,9 +44,10 @@
         .search-bar input {
             width: 100%;
             padding: 10px 40px 10px 15px;
-            border: 2px solid #e0e0e0;
+            border: 1px solid #ccc; /* Subtle border */
             border-radius: 8px;
             font-size: 1rem;
+            transition: border-color 0.3s ease; /* Smooth transition */
         }
 
         .search-bar i {
@@ -54,6 +56,11 @@
             top: 50%;
             transform: translateY(-50%);
             color: #95a5a6;
+        }
+
+        .search-bar input:focus {
+            border-color: #2980b9; /* Highlight border on focus */
+            outline: none; /* Remove default outline */
         }
 
         .category-filter {
@@ -68,21 +75,22 @@
         }
 
         .product-card {
-            border: none;
+            border: 1px solid #e0e0e0; /* Add border for definition */
             border-radius: 15px;
             overflow: hidden;
             text-align: left;
             background-color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: none; /* Remove transition effects */
             padding: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: none; /* Remove enhanced shadow on hover */
             cursor: pointer;
             position: relative;
         }
 
         .product-card:hover {
-           
-            box-shadow: 0 18px 25px rgba(0, 0, 0, 0.15);
+            transform: none; /* Remove hover lift effect */
+            box-shadow: none; /* Remove enhanced shadow on hover */
+            border: 1px solid transparent; /* Remove border on hover */
         }
 
         .product-card img {
@@ -132,12 +140,12 @@
         }
 
         .stock-status.in-stock {
-            background-color: #e8f5e9;
+            background-color: #e8f5e9; /* Soft green for in-stock */
             color: #2e7d32;
         }
 
         .stock-status.out-of-stock {
-            background-color: #ffebee;
+            background-color: #ffebee; /* Soft red for out-of-stock */
             color: #c62828;
         }
 
@@ -200,18 +208,18 @@
         }
 
         .btn-buy {
-            background: linear-gradient(45deg, #2980b9, #3498db);
+            background: #007bff; /* Updated button color */
             color: white;
             border: none;
             padding: 12px 30px;
-            border-radius: 8px;
+            border-radius: 25px; /* More rounded corners */
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease; /* Smooth transition */
         }
 
         .btn-buy:hover {
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            transform: translateY(-2px);
+            background: #0056b3; /* Darker shade on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
         }
 
         .btn-buy:disabled {
@@ -242,13 +250,13 @@
 
         /* Additional Modal Styles */
         .modal-title {
-            font-size: 1.75rem;
-            font-weight: 700;
+            font-size: 2rem; /* Increased modal title size */
+            font-weight: 600;
             color: #2c3e50;
         }
 
         .modal-details-section h4 {
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Increased size for better hierarchy */
             font-weight: 600;
             color: #2c3e50;
         }
@@ -256,6 +264,7 @@
         .modal-details-section p {
             font-size: 1rem;
             color: #34495e;
+            line-height: 1.8; /* Improved line height for readability */
         }
 
         .modal-details-section .text-muted {
@@ -300,7 +309,7 @@
         /* Non-responsive styles */
         @media (max-width: 768px) {
             .header-section h1 {
-                font-size: 2rem;
+                font-size: 2.5rem; /* Adjusted for smaller screens */
             }
 
             .search-filter-container {
@@ -375,15 +384,320 @@
                 top: 45%;
                 left: 43%;
             }
+
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none; /* Hide arrows on mobile */
+            }
+
+            .banner .overlay h2 {
+                font-size: 6vw; /* Adjusted for smaller screens */
+            }
+
+            .banner .overlay p {
+                font-size: 5vw; /* Adjusted for smaller screens */
+            }
+        }
+
+        .banner {
+            position: relative; /* Position relative for absolute positioning of overlay */
+            background-color: #2980b9;
+            color: white;
+            margin-bottom: 30px;
+            overflow: hidden; /* Prevent overflow */
+            width: 100%; /* Fixed width */
+            height: 400px; /* Fixed height */
+            margin-left: auto; /* Center the banner */
+            margin-right: auto; /* Center the banner */
+            border-radius: 10px; /* Rounded corners for the banner */
+        }
+
+        .banner img {
+            width: 100%; /* Make the image responsive */
+            height: 100%; /* Set height to fill the banner */
+            object-fit: cover; /* Cover the area without distortion */
+            filter: brightness(0.8); /* Darken banner images slightly */
+        }
+
+        .banner .overlay {
+            position: absolute; /* Position overlay */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust for centering */
+            text-align: center; /* Center text */
+            color: white; /* Text color */
+            background-color: rgba(0, 0, 0, 0.6); /* Darker overlay for better text contrast */
+            padding: 20px; /* Padding for the overlay */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .banner .overlay h2 {
+            font-size: 3vw; /* Responsive font size */
+            margin: 0; /* Remove default margin */
+        }
+
+        .banner .overlay p {
+            font-size: 2vw; /* Responsive font size */
+            margin: 10px 0; /* Margin for spacing */
+        }
+
+        @media (max-width: 768px) {
+            .banner {
+                height: 250px; /* Adjust height for smaller screens */
+            }
+
+            .banner .overlay h2 {
+                font-size: 6vw; /* Adjust font size for smaller screens */
+            }
+
+            .banner .overlay p {
+                font-size: 5vw; /* Adjust font size for smaller screens */
+            }
+        }
+
+        /* Featured Products Carousel Controls */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%; /* Increase the width for better click area */
+            opacity: 1; /* Ensure they are fully visible */
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(13, 6, 6, 0.8); /* White background for better contrast */
+            border-radius: 50%; /* Rounded shape */
+            padding: 10px; /* Padding for a larger clickable area */
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: rgba(0, 0, 0, 0.1); /* Slight darkening on hover */
+        }
+
+        #paginationControls .btn {
+            font-weight: 600; /* Make the button text bold */
+            padding: 10px 20px; /* Increase padding for a larger button */
+            border-radius: 25px; /* More rounded corners */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        #paginationControls .btn:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            color: white; /* Ensure text remains white on hover */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #f8f9fa; /* Light background for the footer */
+            padding: 40px 0; /* Padding for spacing */
+            color: #343a40; /* Dark text color */
+        }
+
+        footer h5 {
+            font-size: 1.25rem; /* Font size for footer headings */
+            margin-bottom: 20px; /* Space below headings */
+            font-weight: 600; /* Bold headings */
+        }
+
+        footer p {
+            margin-bottom: 10px; /* Space below paragraphs */
+            line-height: 1.5; /* Improved line height for readability */
+        }
+
+        footer a {
+            color: #007bff; /* Link color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s; /* Smooth transition for hover effect */
+        }
+
+        footer a:hover {
+            color: #0056b3; /* Darker shade on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        .footer-bottom {
+            background-color: #e9ecef; /* Background for the bottom section */
+            padding: 10px 0; /* Padding for spacing */
+            color: #6c757d; /* Lighter text color */
         }
     </style>
 </head>
 <body>
-    <div class="header-section">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <h1 class="text-center">Products</h1>
+            <a class="navbar-brand" href="#">Aitam-Olx</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/assets/images/banner1.jpg" class="d-block w-100" alt="Banner 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/banner2.jpg" class="d-block w-100" alt="Banner 2">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/banner3.jpg" class="d-block w-100" alt="Banner 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Featured Products Section -->
+    <div class="container my-5">
+        <h2 class="text-center my-4">Featured Products</h2>
+        <div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="hover">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product1.jpg" alt="Product 1">
+                                <div class="product-details">
+                                    <h5>Product 1</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="https://m.media-amazon.com/images/I/41UwiqzW6eL._SX300_SY300_QL70_FMwebp_.jpg" alt="Product 2">
+                                <div class="product-details">
+                                    <h5>Product 2</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="https://m.media-amazon.com/images/I/41hH9UEyWeL._SX342_SY445_QL70_FMwebp_.jpg" alt="Product 3">
+                                <div class="product-details">
+                                    <h5>Product 3</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product4.jpg" alt="Product 4">
+                                <div class="product-details">
+                                    <h5>Product 4</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product5.jpg" alt="Product 5">
+                                <div class="product-details">
+                                    <h5>Product 5</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product6.jpg" alt="Product 6">
+                                <div class="product-details">
+                                    <h5>Product 6</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product7.jpg" alt="Product 7">
+                                <div class="product-details">
+                                    <h5>Product 7</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product8.jpg" alt="Product 8">
+                                <div class="product-details">
+                                    <h5>Product 8</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product9.jpg" alt="Product 9">
+                                <div class="product-details">
+                                    <h5>Product 9</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product10.jpg" alt="Product 10">
+                                <div class="product-details">
+                                    <h5>Product 10</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product11.jpg" alt="Product 11">
+                                <div class="product-details">
+                                    <h5>Product 11</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="product-card">
+                                <img src="/assets/images/product12.jpg" alt="Product 12">
+                                <div class="product-details">
+                                    <h5>Product 12</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </div>
+
+    <h2 class="text-center my-4">All Products</h2>
 
     <div class="container">
         <div class="search-filter-container">
@@ -406,6 +720,17 @@
             <!-- Product Cards will be dynamically generated here -->
         </div>
         <div class="loader" id="loader"></div>
+
+        <!-- Pagination Controls -->
+        <div id="paginationControls" class="d-flex justify-content-center my-4">
+            <button id="prevPage" class="btn btn-primary me-2" disabled>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <span id="pageInfo" class="mx-3">Page 1</span>
+            <button id="nextPage" class="btn btn-primary ms-2">
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
     </div>
 
     <!-- Rest of the code remains the same -->
@@ -439,6 +764,8 @@
         let productData = [];
         let isFirstFetch = true;
         let isSearching = false; // Track if a search is active
+        let currentPage = 1;
+        const productsPerPage = 8; // Number of products to display per page
 
         async function fetchProductData() {
             const loader = document.getElementById('loader');
@@ -471,10 +798,13 @@
 
         function renderProductCards(data) {
             const container = document.getElementById('productContainer');
-            const existingCards = Array.from(container.children);
-            const newCards = [];
+            container.innerHTML = ''; // Clear existing cards
 
-            data.forEach((product, index) => {
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const paginatedData = data.slice(startIndex, endIndex);
+
+            paginatedData.forEach((product, index) => {
                 const stockStatus = product.stock > 0 ? 'In Stock' : 'Out of Stock';
                 const card = document.createElement('div');
                 card.className = 'product-card';
@@ -483,7 +813,6 @@
                         <img src="${product.images[0]}" alt="${product.name}">
                         <div class="product-details">
                             <h5>${product.name}</h5>
-                          
                             <div class="d-flex align-items-center">
                                 <span class="price">₹${product.price}</span>
                                 <span class="mrp"><del>${product.mrp}</del></span>
@@ -494,24 +823,13 @@
                         </div>
                     </a>
                 `;
-                newCards.push(card);
+                container.appendChild(card);
             });
 
-            // Replace only the changed cards to avoid shaking
-            newCards.forEach((newCard, index) => {
-                if (existingCards[index]) {
-                    container.replaceChild(newCard, existingCards[index]);
-                } else {
-                    container.appendChild(newCard);
-                }
-            });
-
-            // Remove any extra cards
-            if (existingCards.length > newCards.length) {
-                for (let i = newCards.length; i < existingCards.length; i++) {
-                    container.removeChild(existingCards[i]);
-                }
-            }
+            // Update pagination controls
+            document.getElementById('pageInfo').textContent = `Page ${currentPage}`;
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = endIndex >= data.length;
         }
 
         function showProductDetails(index) {
@@ -577,6 +895,22 @@
                     renderProductCards(productData); // Render all products
                 }
             });
+
+            document.getElementById('prevPage').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderProductCards(productData);
+                    scrollToProducts(); // Scroll to the products section
+                }
+            });
+
+            document.getElementById('nextPage').addEventListener('click', () => {
+                if ((currentPage * productsPerPage) < productData.length) {
+                    currentPage++;
+                    renderProductCards(productData);
+                    scrollToProducts(); // Scroll to the products section
+                }
+            });
         });
 
         function filterProducts(category, searchTerm) {
@@ -595,9 +929,42 @@
             
             renderProductCards(filteredData);
         }
+
+        function scrollToProducts() {
+            const productContainer = document.getElementById('productContainer');
+            productContainer.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the product container
+        }
     </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Footer Section -->
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <h5 class="text-uppercase">About Us</h5>
+                    <p>
+                        Aitam-Olx is your go-to platform for the best products in various categories. We strive to provide quality and value to our customers.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Contact Us</h5>
+                    <p>Email: support@aitam-olx.com</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="text-uppercase">Follow Us</h5>
+                    <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i> Facebook</a><br>
+                    <a href="#" class="text-dark"><i class="fab fa-twitter"></i> Twitter</a><br>
+                    <a href="#" class="text-dark"><i class="fab fa-instagram"></i> Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: #e9ecef;">
+            © 2023 Aitam-Olx. All rights reserved.
+        </div>
+    </footer>
 </body>
 </html>
